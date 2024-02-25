@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import Button from 'src/common/Button/Button';
 
 export default function CourseCard({
