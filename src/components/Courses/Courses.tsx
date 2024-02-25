@@ -1,15 +1,43 @@
 import * as React from 'react';
 
+import { useState } from 'react';
+
 import Button from 'src/common/Button/Button';
+
+import { getCourseById } from 'src/helpers/getCourseById';
 
 import CourseCard from './components/CourseCard/CourseCard';
 import SearchBar from './components/SearchBar/SearchBar';
+import EmptyCourseList from '../EmptyCourseList/EmptyCourseList';
+import CourseInfo from '../CourseInfo/CourseInfo';
 
 export default function Courses({ data }) {
-	const components = data.map((course) => {
-		return <CourseCard course={course} />;
-	});
-	return (
+	const [courses, setCourses] = useState(data);
+	const [showInfo, setShowInfo] = useState(false);
+	const [courseId, setCourseId] = useState('');
+	const components =
+		courses.length !== 0 ? (
+			courses.map((course) => {
+				return (
+					<CourseCard
+						course={course}
+						//showInfo={showInfo}
+						setShowInfo={setShowInfo}
+						//courseId={courseId}
+						setCourseId={setCourseId}
+					/>
+				);
+			})
+		) : (
+			<EmptyCourseList />
+		);
+	const component = showInfo ? (
+		<CourseInfo
+			course={getCourseById(courseId)}
+			//showInfo={showInfo}
+			setShowInfo={setShowInfo}
+		/>
+	) : (
 		<div>
 			<SearchBar />
 			{components}
@@ -17,4 +45,5 @@ export default function Courses({ data }) {
 			<Button text='Add new course' />
 		</div>
 	);
+	return <>{component}</>;
 }

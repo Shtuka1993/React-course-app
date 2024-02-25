@@ -4,43 +4,40 @@ import Button from 'src/common/Button/Button';
 
 import { getCourseDuration } from 'src/helpers/getCourseDuration';
 import { formatCreationDate } from 'src/helpers/formatCreationDate';
+import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 
-export default function CourseInfo({
-	title,
-	description,
-	id,
-	duration,
-	created,
-	authors,
-}) {
+export default function CourseInfo({ course, setShowInfo }) {
+	const actionBack = () => {
+		setShowInfo(false);
+	};
 	return (
 		<>
-			<h2>{title}</h2>
+			<h2>{course.title}</h2>
 			<div>
 				<div>
 					<h3>Description:</h3>
-					<p>{description}</p>
+					<p>{course.description}</p>
 				</div>
 				<div>
 					<ul>
 						<li>
 							<b>ID:</b>
-							{id}
+							{course.id}
 						</li>
 						<li>
 							<b>Duration:</b>
-							{getCourseDuration(duration)}
+							{getCourseDuration(course.duration)}
 						</li>
 						<li>
 							<b>Created:</b>
-							{formatCreationDate(created)}
+							{formatCreationDate(course.creationDate)}
 						</li>
 						<li>
 							<b>Authors:</b>
-							{authors}
+							{formatAuthorsData(course.authors)}
 						</li>
 					</ul>
-					<Button text='Back' />
+					<Button text='Back' onClick={actionBack} />
 				</div>
 			</div>
 		</>
