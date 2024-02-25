@@ -2,32 +2,30 @@ import * as React from 'react';
 
 import Button from 'src/common/Button/Button';
 
-export default function CourseCard({
-	title,
-	description,
-	authors,
-	duration,
-	created,
-}) {
+import { getCourseDuration } from 'src/helpers/getCourseDuration';
+import { formatCreationDate } from 'src/helpers/formatCreationDate';
+import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
+
+export default function CourseCard({ course }) {
 	return (
 		<>
 			<div>
-				<h3>{title}</h3>
-				<p>{description}</p>
+				<h3>{course.title}</h3>
+				<p>{course.description}</p>
 			</div>
 			<div>
 				<ul>
 					<li>
 						<b>Authors:</b>
-						{authors}
+						{formatAuthorsData(course.authors)}
 					</li>
 					<li>
 						<b>Duration:</b>
-						{duration}
+						{getCourseDuration(course.duration)}
 					</li>
 					<li>
 						<b>Created:</b>
-						{created}
+						{formatCreationDate(course.creationDate)}
 					</li>
 				</ul>
 				<Button text='Show course' />

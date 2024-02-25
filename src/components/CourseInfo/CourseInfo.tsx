@@ -2,6 +2,9 @@ import * as React from 'react';
 
 import Button from 'src/common/Button/Button';
 
+import { getCourseDuration } from 'src/helpers/getCourseDuration';
+import { formatCreationDate } from 'src/helpers/formatCreationDate';
+
 export default function CourseInfo({
 	title,
 	description,
@@ -26,11 +29,11 @@ export default function CourseInfo({
 						</li>
 						<li>
 							<b>Duration:</b>
-							{duration}
+							{getCourseDuration(duration)}
 						</li>
 						<li>
 							<b>Created:</b>
-							{created}
+							{formatCreationDate(created)}
 						</li>
 						<li>
 							<b>Authors:</b>
