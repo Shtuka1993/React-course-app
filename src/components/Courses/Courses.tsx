@@ -33,7 +33,7 @@ export default function Courses({ data }) {
 		<CourseInfo course={getCourseById(courseId)} setShowInfo={setShowInfo} />
 	) : (
 		<div>
-			<SearchBar />
+			<SearchBar setCourses={setCourses} />
 			{components}
 
 			<Button text='Add new course' />
