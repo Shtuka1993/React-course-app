@@ -21,9 +21,7 @@ export default function Courses({ data }) {
 				return (
 					<CourseCard
 						course={course}
-						//showInfo={showInfo}
 						setShowInfo={setShowInfo}
-						//courseId={courseId}
 						setCourseId={setCourseId}
 					/>
 				);
@@ -32,11 +30,7 @@ export default function Courses({ data }) {
 			<EmptyCourseList />
 		);
 	const component = showInfo ? (
-		<CourseInfo
-			course={getCourseById(courseId)}
-			//showInfo={showInfo}
-			setShowInfo={setShowInfo}
-		/>
+		<CourseInfo course={getCourseById(courseId)} setShowInfo={setShowInfo} />
 	) : (
 		<div>
 			<SearchBar />

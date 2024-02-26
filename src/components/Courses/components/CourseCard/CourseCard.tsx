@@ -6,13 +6,7 @@ import { getCourseDuration } from 'src/helpers/getCourseDuration';
 import { formatCreationDate } from 'src/helpers/formatCreationDate';
 import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 
-export default function CourseCard({
-	course,
-	//showInfo,
-	setShowInfo,
-	//courseId,
-	setCourseId,
-}) {
+export default function CourseCard({ course, setShowInfo, setCourseId }) {
 	const showInfoAction = () => {
 		setShowInfo(true);
 		setCourseId(course.id);
