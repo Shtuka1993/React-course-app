@@ -17,12 +17,13 @@ export default function Courses({ data }) {
 	const [courseId, setCourseId] = useState('');
 	const components =
 		courses.length !== 0 ? (
-			courses.map((course) => {
+			courses.map((course, id) => {
 				return (
 					<CourseCard
 						course={course}
 						setShowInfo={setShowInfo}
 						setCourseId={setCourseId}
+						key={id}
 					/>
 				);
 			})

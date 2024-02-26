@@ -6,6 +6,8 @@ export const getCourses = (query) => {
 
 		if (item.title.includes(query)) return item;
 	});
-
-	return courses;
+	const newCourses = courses.filter((element) => {
+		return element !== undefined;
+	});
+	return newCourses;
 };

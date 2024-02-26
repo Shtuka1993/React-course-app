@@ -11,6 +11,8 @@ import { getCourses } from 'src/helpers/getCourses';
 export default function SearchBar({ setCourses }) {
 	const [query, setQuery] = useState('');
 
+	const inputData = { query: '' };
+
 	const actionSearch = () => {
 		const result = query === '' ? data : getCourses(query);
 		setCourses(result);
@@ -18,7 +20,11 @@ export default function SearchBar({ setCourses }) {
 
 	return (
 		<>
-			<Input placeholder='Course' value={query} onChange={setQuery} />
+			<Input
+				placeholder='Course'
+				value={query}
+				onChange={(e) => setQuery(e.target.value)}
+			/>
 			<Button text='Search' onClick={actionSearch} />
 		</>
 	);
