@@ -11,8 +11,6 @@ import { getCourses } from 'src/helpers/getCourses';
 export default function SearchBar({ setCourses }) {
 	const [query, setQuery] = useState('');
 
-	const inputData = { query: '' };
-
 	const actionSearch = () => {
 		const result = query === '' ? data : getCourses(query);
 		setCourses(result);

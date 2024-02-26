@@ -28,16 +28,27 @@ export default function Courses({ data }) {
 				);
 			})
 		) : (
-			<EmptyCourseList />
+			<></>
 		);
+	const btn = <Button text='Add new course' />;
+	const empty = <EmptyCourseList />;
+	const list = (
+		<div>
+			{components}
+			{btn}
+		</div>
+	);
+	const view = <>{courses.length !== 0 ? list : empty}</>;
 	const component = showInfo ? (
-		<CourseInfo course={getCourseById(courseId)} setShowInfo={setShowInfo} />
+		<CourseInfo
+			course={getCourseById(courseId)}
+			setShowInfo={setShowInfo}
+			setCourses={setCourses}
+		/>
 	) : (
 		<div>
 			<SearchBar setCourses={setCourses} />
-			{components}
-
-			<Button text='Add new course' />
+			{view}
 		</div>
 	);
 	return <>{component}</>;

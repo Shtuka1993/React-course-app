@@ -6,9 +6,12 @@ import { getCourseDuration } from 'src/helpers/getCourseDuration';
 import { formatCreationDate } from 'src/helpers/formatCreationDate';
 import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 
-export default function CourseInfo({ course, setShowInfo }) {
+import { mockedCoursesList as data } from 'src/constants';
+
+export default function CourseInfo({ course, setShowInfo, setCourses }) {
 	const actionBack = () => {
 		setShowInfo(false);
+		setCourses(data);
 	};
 	return (
 		<>
