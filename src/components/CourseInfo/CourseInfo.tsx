@@ -32,7 +32,7 @@ export default function CourseInfo(props: courseInfoProps) {
 	return (
 		<div className='course-info'>
 			<h2 className='course-title'>{course.title}</h2>
-			<div className='course-card'>
+			<div className='course-card-content'>
 				<div className='left-block'>
 					<h3 className='title'>{DESCRIPTION}:</h3>
 					<p className='text-block'>{course.description}</p>
@@ -56,9 +56,9 @@ export default function CourseInfo(props: courseInfoProps) {
 							{formatAuthorsData(course.authors)}
 						</li>
 					</ul>
-					<Button text={BACK} onClick={actionBack} />
 				</div>
 			</div>
+			<Button text={BACK} onClick={actionBack} />
 		</div>
 	);
 }

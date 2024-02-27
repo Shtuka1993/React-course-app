@@ -24,13 +24,13 @@ export default function SearchBar(props: searchBarProps) {
 	};
 
 	return (
-		<>
+		<div className='search-block'>
 			<Input
 				placeholder={COURSE}
 				value={query}
 				onChange={(e) => setQuery((e.target as HTMLInputElement).value)}
 			/>
 			<Button text={SEARCH} onClick={actionSearch} />
-		</>
+		</div>
 	);
 }

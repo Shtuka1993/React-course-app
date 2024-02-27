@@ -3,27 +3,42 @@
 
 @use 'components/CourseInfo/CourseInfo.module.scss';
 @use 'components/Header/Header.module.scss';
-
+@use'components/Courses/components/SearchBar/SearchBar.module.scss';
+@use'components/Courses/components/CourseCard/CourseCard.module.scss';
+@use'components/Courses/Courses.module.scss';
+@use'components/EmptyCourseList/EmptyCourseList.module.scss';
 * {
     font-family: Open Sans;
     font-weight: 400;
-    line-height: 20px;
-    font-size: 16px;
+    line-height: 1.5rem;
+    font-size: 1rem;
     color: #333E48;
 }
 
 .title {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 .content-block {
     background-color: #f7f7f7;
-    padding: 67px 187px;
+    padding: 2.3rem 7rem;
 }
 
 h2.course-title {
     font-weight: 700;
-    font-size:32px;
-    line-height: 40px;
+    font-size:2.3rem;
+    line-height: 3rem;
+}
+
+.course-card-content {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

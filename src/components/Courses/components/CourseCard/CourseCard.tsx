@@ -22,28 +22,30 @@ export default function CourseCard(props: courseCardProps) {
 		setCourseId(course.id);
 	};
 	return (
-		<>
-			<div>
-				<h2 className='course-title'>{course.title}</h2>
-				<p>{course.description}</p>
+		<div className='course-cart'>
+			<h2 className='course-title'>{course.title}</h2>
+			<div className='course-card-content'>
+				<div>
+					<p>{course.description}</p>
+				</div>
+				<div>
+					<ul>
+						<li>
+							<b className='title'>{AUTHORS}:</b>
+							{formatAuthorsData(course.authors)}
+						</li>
+						<li>
+							<b className='title'>{DURATION}:</b>
+							{getCourseDuration(course.duration)}
+						</li>
+						<li>
+							<b className='title'>{CREATED}:</b>
+							{formatCreationDate(course.creationDate)}
+						</li>
+					</ul>
+					<Button text={SHOW_COURSE} onClick={showInfoAction} />
+				</div>
 			</div>
-			<div>
-				<ul>
-					<li>
-						<b className='title'>{AUTHORS}:</b>
-						{formatAuthorsData(course.authors)}
-					</li>
-					<li>
-						<b className='title'>{DURATION}:</b>
-						{getCourseDuration(course.duration)}
-					</li>
-					<li>
-						<b className='title'>{CREATED}:</b>
-						{formatCreationDate(course.creationDate)}
-					</li>
-				</ul>
-				<Button text={SHOW_COURSE} onClick={showInfoAction} />
-			</div>
-		</>
+		</div>
 	);
 }

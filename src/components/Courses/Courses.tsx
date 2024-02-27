@@ -40,12 +40,7 @@ export default function Courses(props: coursesProp) {
 		);
 	const btn = <Button text={ADD_COURSE_BTN} />;
 	const empty = <EmptyCourseList />;
-	const list = (
-		<div>
-			{components}
-			{btn}
-		</div>
-	);
+	const list = <div>{components}</div>;
 	const view = <>{courses.length !== 0 ? list : empty}</>;
 	const component = showInfo ? (
 		<CourseInfo
@@ -55,7 +50,10 @@ export default function Courses(props: coursesProp) {
 		/>
 	) : (
 		<div>
-			<SearchBar setCourses={setCourses} />
+			<div className='top-controls'>
+				<SearchBar setCourses={setCourses} />
+				{btn}
+			</div>
 			{view}
 		</div>
 	);
