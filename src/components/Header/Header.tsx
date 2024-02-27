@@ -7,9 +7,9 @@ import { LOGOUT } from 'src/constants';
 
 export default function Header() {
 	return (
-		<>
+		<div className='header'>
 			<Logo />
 			<Button text={LOGOUT} />
-		</>
+		</div>
 	);
 }

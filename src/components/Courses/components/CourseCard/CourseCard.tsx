@@ -24,21 +24,21 @@ export default function CourseCard(props: courseCardProps) {
 	return (
 		<>
 			<div>
-				<h3>{course.title}</h3>
+				<h2 className='course-title'>{course.title}</h2>
 				<p>{course.description}</p>
 			</div>
 			<div>
 				<ul>
 					<li>
-						<b>{AUTHORS}:</b>
+						<b className='title'>{AUTHORS}:</b>
 						{formatAuthorsData(course.authors)}
 					</li>
 					<li>
-						<b>{DURATION}:</b>
+						<b className='title'>{DURATION}:</b>
 						{getCourseDuration(course.duration)}
 					</li>
 					<li>
-						<b>{CREATED}:</b>
+						<b className='title'>{CREATED}:</b>
 						{formatCreationDate(course.creationDate)}
 					</li>
 				</ul>

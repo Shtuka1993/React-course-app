@@ -30,35 +30,35 @@ export default function CourseInfo(props: courseInfoProps) {
 		setCourses(data);
 	};
 	return (
-		<>
-			<h2>{course.title}</h2>
-			<div>
-				<div>
-					<h3>{DESCRIPTION}:</h3>
-					<p>{course.description}</p>
+		<div className='course-info'>
+			<h2 className='course-title'>{course.title}</h2>
+			<div className='course-card'>
+				<div className='left-block'>
+					<h3 className='title'>{DESCRIPTION}:</h3>
+					<p className='text-block'>{course.description}</p>
 				</div>
-				<div>
-					<ul>
+				<div className='right-block'>
+					<ul className='course-description-list'>
 						<li>
-							<b>{ID}:</b>
+							<b className='title'>{ID}:</b>
 							{course.id}
 						</li>
 						<li>
-							<b>{DURATION}:</b>
+							<b className='title'>{DURATION}:</b>
 							{getCourseDuration(course.duration)}
 						</li>
 						<li>
-							<b>{CREATED}:</b>
+							<b className='title'>{CREATED}:</b>
 							{formatCreationDate(course.creationDate)}
 						</li>
 						<li>
-							<b>{AUTHORS}:</b>
+							<b className='title'>{AUTHORS}:</b>
 							{formatAuthorsData(course.authors)}
 						</li>
 					</ul>
 					<Button text={BACK} onClick={actionBack} />
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }

@@ -1,0 +1,29 @@
+@use 'common/Button/Button.module.scss';
+@use 'common/Input/Input.module.scss';
+
+@use 'components/CourseInfo/CourseInfo.module.scss';
+@use 'components/Header/Header.module.scss';
+
+* {
+    font-family: Open Sans;
+    font-weight: 400;
+    line-height: 20px;
+    font-size: 16px;
+    color: #333E48;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.content-block {
+    background-color: #f7f7f7;
+    padding: 67px 187px;
+}
+
+h2.course-title {
+    font-weight: 700;
+    font-size:32px;
+    line-height: 40px;
+}
