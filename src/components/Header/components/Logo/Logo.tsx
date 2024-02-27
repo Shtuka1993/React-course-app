@@ -2,12 +2,8 @@ import * as React from 'react';
 
 import logo from './logo.png';
 
+import { LOGO } from 'src/constants';
+
 const logoWidth = 42;
 
-export default function Logo() {
-	return (
-		<>
-			<img src={logo} alt='Logo' width={logoWidth} />
-		</>
-	);
-}
+export const Logo = () => <img src={logo} alt={LOGO} width={logoWidth} />;

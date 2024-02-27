@@ -1,8 +1,8 @@
 import { mockedCoursesList as data } from 'src/constants';
 
-export const getCourseById = (id) => {
+export const getCourseById = (id: string): unknown => {
 	let course = null;
-	const stub = data.map((item) => {
+	data.map((item) => {
 		if (item.id === id) course = item;
 	});
 

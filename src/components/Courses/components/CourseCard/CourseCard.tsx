@@ -6,7 +6,17 @@ import { getCourseDuration } from 'src/helpers/getCourseDuration';
 import { formatCreationDate } from 'src/helpers/formatCreationDate';
 import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 
-export default function CourseCard({ course, setShowInfo, setCourseId }) {
+import { AUTHORS, CREATED, DURATION, SHOW_COURSE } from 'src/constants';
+
+interface courseCardProps {
+	course: any;
+	setShowInfo?: (state: boolean) => void;
+	setCourseId?: (id: string) => void;
+}
+
+export default function CourseCard(props: courseCardProps) {
+	const { course, setShowInfo, setCourseId } = props;
+
 	const showInfoAction = () => {
 		setShowInfo(true);
 		setCourseId(course.id);
@@ -20,19 +30,19 @@ export default function CourseCard({ course, setShowInfo, setCourseId }) {
 			<div>
 				<ul>
 					<li>
-						<b>Authors:</b>
+						<b>{AUTHORS}:</b>
 						{formatAuthorsData(course.authors)}
 					</li>
 					<li>
-						<b>Duration:</b>
+						<b>{DURATION}:</b>
 						{getCourseDuration(course.duration)}
 					</li>
 					<li>
-						<b>Created:</b>
+						<b>{CREATED}:</b>
 						{formatCreationDate(course.creationDate)}
 					</li>
 				</ul>
-				<Button text='Show course' onClick={showInfoAction} />
+				<Button text={SHOW_COURSE} onClick={showInfoAction} />
 			</div>
 		</>
 	);

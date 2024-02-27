@@ -47,3 +47,19 @@ export const mockedAuthorsList = [
 		name: 'Valentina Larina',
 	},
 ];
+
+export const EMPTY_LIST_TITLE = 'Your List is Empty';
+export const EMPTY_LIST_DESCRIPTION =
+	"Please use 'Add New Course' button to add your first course";
+export const ADD_COURSE_BTN = 'Add new course';
+export const LOGOUT = 'Logout';
+export const DESCRIPTION = 'Description';
+export const ID = 'ID';
+export const DURATION = 'Duration';
+export const CREATED = 'Created';
+export const AUTHORS = 'Authors';
+export const BACK = 'Back';
+export const SHOW_COURSE = 'Show course';
+export const COURSE = 'Course';
+export const SEARCH = 'Search';
+export const LOGO = 'Logo';

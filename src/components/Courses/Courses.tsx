@@ -11,7 +11,15 @@ import SearchBar from './components/SearchBar/SearchBar';
 import EmptyCourseList from '../EmptyCourseList/EmptyCourseList';
 import CourseInfo from '../CourseInfo/CourseInfo';
 
-export default function Courses({ data }) {
+import { ADD_COURSE_BTN } from 'src/constants';
+
+interface coursesProp {
+	data: object[];
+}
+
+export default function Courses(props: coursesProp) {
+	const { data } = props;
+
 	const [courses, setCourses] = useState(data);
 	const [showInfo, setShowInfo] = useState(false);
 	const [courseId, setCourseId] = useState('');
@@ -30,7 +38,7 @@ export default function Courses({ data }) {
 		) : (
 			<></>
 		);
-	const btn = <Button text='Add new course' />;
+	const btn = <Button text={ADD_COURSE_BTN} />;
 	const empty = <EmptyCourseList />;
 	const list = (
 		<div>

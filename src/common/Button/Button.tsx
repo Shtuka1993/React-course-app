@@ -1,10 +1,11 @@
 import * as React from 'react';
 
-export default function Button({
-	text,
-	onClick = (e) => {
-		e.preventDefault();
-	},
-}) {
-	return <button onClick={onClick}>{text}</button>;
+interface buttonProps {
+	text: string;
+	onClick?(): void | React.MouseEvent<HTMLButtonElement>;
+}
+
+export default function Button(props: buttonProps): JSX.Element {
+	const action = props.onClick !== undefined ? props.onClick : undefined;
+	return <button onClick={action}>{props.text}</button>;
 }

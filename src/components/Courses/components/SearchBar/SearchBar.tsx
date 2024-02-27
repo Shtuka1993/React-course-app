@@ -4,11 +4,18 @@ import { useState } from 'react';
 
 import Input from 'src/common/Input/Input';
 import Button from 'src/common/Button/Button';
-import { mockedCoursesList as data } from 'src/constants';
+
+import { COURSE, SEARCH, mockedCoursesList as data } from 'src/constants';
 
 import { getCourses } from 'src/helpers/getCourses';
 
-export default function SearchBar({ setCourses }) {
+interface searchBarProps {
+	setCourses(data: object[]): void;
+}
+
+export default function SearchBar(props: searchBarProps) {
+	const { setCourses } = props;
+
 	const [query, setQuery] = useState('');
 
 	const actionSearch = () => {
@@ -19,11 +26,11 @@ export default function SearchBar({ setCourses }) {
 	return (
 		<>
 			<Input
-				placeholder='Course'
+				placeholder={COURSE}
 				value={query}
-				onChange={(e) => setQuery(e.target.value)}
+				onChange={(e) => setQuery((e.target as HTMLInputElement).value)}
 			/>
-			<Button text='Search' onClick={actionSearch} />
+			<Button text={SEARCH} onClick={actionSearch} />
 		</>
 	);
 }
