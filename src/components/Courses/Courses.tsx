@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import styles from './Courses.module.css';
+
 import { useState } from 'react';
 
 import Button from 'src/common/Button/Button';
@@ -50,7 +52,7 @@ export default function Courses(props: coursesProp) {
 		/>
 	) : (
 		<div>
-			<div className='top-controls'>
+			<div className='topControls'>
 				<SearchBar setCourses={setCourses} />
 				{btn}
 			</div>

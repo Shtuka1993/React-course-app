@@ -6,12 +6,4 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    img {
-        float: left;
-    }
-
-    button {
-        float: right;
-    }
 }

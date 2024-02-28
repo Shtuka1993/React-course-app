@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import styles from './EmptyCourseList.module.css';
+
 import Button from 'src/common/Button/Button';
 
 import {
@@ -10,7 +12,7 @@ import {
 
 export default function EmptyCourseList() {
 	return (
-		<div>
+		<div className={styles.emptyCourseList}>
 			<h3>{EMPTY_LIST_TITLE}</h3>
 			<p>{EMPTY_LIST_DESCRIPTION}</p>
 			<Button text={ADD_COURSE_BTN} />

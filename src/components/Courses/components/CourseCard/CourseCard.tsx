@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import styles from './CourseCard.module.css';
+
 import Button from 'src/common/Button/Button';
 
 import { getCourseDuration } from 'src/helpers/getCourseDuration';
@@ -22,9 +24,9 @@ export default function CourseCard(props: courseCardProps) {
 		setCourseId(course.id);
 	};
 	return (
-		<div className='course-cart'>
-			<h2 className='course-title'>{course.title}</h2>
-			<div className='course-card-content'>
+		<div className={styles.courseCard}>
+			<h2 className='courseTitle'>{course.title}</h2>
+			<div className='courseCardContent'>
 				<div>
 					<p>{course.description}</p>
 				</div>

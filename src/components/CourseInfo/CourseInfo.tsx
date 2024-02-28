@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import styles from './CourseInfo.module.css';
+
 import Button from 'src/common/Button/Button';
 
 import { getCourseDuration } from 'src/helpers/getCourseDuration';
@@ -30,15 +32,15 @@ export default function CourseInfo(props: courseInfoProps) {
 		setCourses(data);
 	};
 	return (
-		<div className='course-info'>
-			<h2 className='course-title'>{course.title}</h2>
-			<div className='course-card-content'>
-				<div className='left-block'>
+		<div className={styles.courseInfo}>
+			<h2 className='courseTitle'>{course.title}</h2>
+			<div className='courseCardContent'>
+				<div>
 					<h3 className='title'>{DESCRIPTION}:</h3>
-					<p className='text-block'>{course.description}</p>
+					<p className='textBlock'>{course.description}</p>
 				</div>
-				<div className='right-block'>
-					<ul className='course-description-list'>
+				<div>
+					<ul className='courseDescriptionList'>
 						<li>
 							<b className='title'>{ID}:</b>
 							{course.id}

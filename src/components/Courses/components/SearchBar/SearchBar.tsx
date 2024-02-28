@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import styles from './SearchBar.module.css';
+
 import { useState } from 'react';
 
 import Input from 'src/common/Input/Input';
@@ -24,7 +26,7 @@ export default function SearchBar(props: searchBarProps) {
 	};
 
 	return (
-		<div className='search-block'>
+		<div className={styles.searchBar}>
 			<Input
 				placeholder={COURSE}
 				value={query}

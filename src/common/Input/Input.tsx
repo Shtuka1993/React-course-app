@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import styles from './Input.module.css';
+
 interface inputProps {
 	placeholder: string;
 	value: string;
@@ -16,6 +18,7 @@ export default function Input(props: inputProps): JSX.Element {
 		<>
 			{element}
 			<input
+				className={styles.input}
 				name={name}
 				type='text'
 				placeholder={placeholder}
