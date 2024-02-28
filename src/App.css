@@ -12,6 +12,13 @@ body {
     color: #333E48;
 }
 
+#root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
 .title {
     font-weight: 700;
     font-size: 1.5rem;
@@ -20,6 +27,9 @@ body {
 .contentBlock {
     background-color: #f7f7f7;
     padding: 2.3rem 7rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .courseTitle {
@@ -30,12 +40,6 @@ body {
 
 .courseCardContent {
     display:flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.topControls {
-    display: flex;
     justify-content: space-between;
     align-items: center;
 }

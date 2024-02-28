@@ -52,12 +52,12 @@ export default function Courses(props: coursesProp) {
 		/>
 	) : (
 		<div>
-			<div className='topControls'>
+			<div className={styles.topControl}>
 				<SearchBar setCourses={setCourses} />
 				{btn}
 			</div>
 			{view}
 		</div>
 	);
-	return <>{component}</>;
+	return <div className={styles.courses}>{component}</div>;
 }

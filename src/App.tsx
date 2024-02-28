@@ -11,7 +11,7 @@ export default function App() {
 	return (
 		<>
 			<Header />
-			<div className='content-block'>
+			<div className='contentBlock'>
 				<Courses data={mockedCoursesList} />
 			</div>
 		</>
