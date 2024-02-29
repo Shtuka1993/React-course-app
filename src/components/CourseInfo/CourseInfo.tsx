@@ -1,15 +1,15 @@
-import * as React from 'react';
+import * as types from 'src/types';
 
 import styles from './CourseInfo.module.css';
 
-import Button from 'src/common/Button/Button';
+import { Button } from 'src/common/Button/Button';
 
 import { getCourseDuration } from 'src/helpers/getCourseDuration';
 import { formatCreationDate } from 'src/helpers/formatCreationDate';
 import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 
 import {
-	mockedCoursesList as data,
+	//mockedCoursesList as courses,
 	DESCRIPTION,
 	ID,
 	DURATION,
@@ -18,18 +18,12 @@ import {
 	BACK,
 } from 'src/constants';
 
-interface courseInfoProps {
-	course: any;
-	setShowInfo?(state: boolean): void;
-	setCourses?(data: object[]): void;
-}
-
-export default function CourseInfo(props: courseInfoProps) {
-	const { course, setShowInfo, setCourses } = props;
+export default function CourseInfo(props: types.CourseInfoProps) {
+	const { course, setShowInfo /*, setCourses */ } = props;
 
 	const actionBack = () => {
 		setShowInfo(false);
-		setCourses(data);
+		//setCourses(courses);
 	};
 	return (
 		<div className={styles.courseInfo}>

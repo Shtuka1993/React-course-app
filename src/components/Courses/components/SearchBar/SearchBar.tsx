@@ -1,27 +1,23 @@
-import * as React from 'react';
+import * as types from 'src/types';
 
 import styles from './SearchBar.module.css';
 
 import { useState } from 'react';
 
 import Input from 'src/common/Input/Input';
-import Button from 'src/common/Button/Button';
+import { Button } from 'src/common/Button/Button';
 
-import { COURSE, SEARCH, mockedCoursesList as data } from 'src/constants';
+import { COURSE, SEARCH, mockedCoursesList as courses } from 'src/constants';
 
 import { getCourses } from 'src/helpers/getCourses';
 
-interface searchBarProps {
-	setCourses(data: object[]): void;
-}
-
-export default function SearchBar(props: searchBarProps) {
+export default function SearchBar(props: types.SearchBarProps) {
 	const { setCourses } = props;
 
 	const [query, setQuery] = useState('');
 
 	const actionSearch = () => {
-		const result = query === '' ? data : getCourses(query);
+		const result = query === '' ? courses : getCourses(query);
 		setCourses(result);
 	};
 

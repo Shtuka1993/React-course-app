@@ -1,10 +1,8 @@
-import * as React from 'react';
-
 import styles from './Courses.module.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import Button from 'src/common/Button/Button';
+import { Button } from 'src/common/Button/Button';
 
 import { getCourseById } from 'src/helpers/getCourseById';
 
@@ -13,18 +11,21 @@ import SearchBar from './components/SearchBar/SearchBar';
 import EmptyCourseList from '../EmptyCourseList/EmptyCourseList';
 import CourseInfo from '../CourseInfo/CourseInfo';
 
-import { ADD_COURSE_BTN } from 'src/constants';
+import {
+	ADD_COURSE_BTN,
+	mockedCoursesList as coursesList,
+} from 'src/constants';
 
-interface coursesProp {
-	data: object[];
-}
+import * as types from 'src/types';
 
-export default function Courses(props: coursesProp) {
-	const { data } = props;
+export default function Courses(props: types.CoursesProps) {
+	const { courses, setCourses } = props;
 
-	const [courses, setCourses] = useState(data);
 	const [showInfo, setShowInfo] = useState(false);
 	const [courseId, setCourseId] = useState('');
+
+	useEffect(() => setCourses(coursesList), [showInfo]);
+
 	const components =
 		courses.length !== 0 ? (
 			courses.map((course, id) => {
@@ -45,11 +46,7 @@ export default function Courses(props: coursesProp) {
 	const list = <div>{components}</div>;
 	const view = <>{courses.length !== 0 ? list : empty}</>;
 	const component = showInfo ? (
-		<CourseInfo
-			course={getCourseById(courseId)}
-			setShowInfo={setShowInfo}
-			setCourses={setCourses}
-		/>
+		<CourseInfo course={getCourseById(courseId)} setShowInfo={setShowInfo} />
 	) : (
 		<div>
 			<div className={styles.topControl}>

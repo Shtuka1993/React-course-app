@@ -1,4 +1,6 @@
-export const mockedCoursesList = [
+import * as types from 'src/types';
+
+export const mockedCoursesList: types.Courses = [
 	{
 		id: 'de5aaa59-90f5-4dbc-b8a9-aaf205c551ba',
 		title: 'JavaScript',

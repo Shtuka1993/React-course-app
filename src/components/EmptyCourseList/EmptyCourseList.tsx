@@ -1,8 +1,6 @@
-import * as React from 'react';
-
 import styles from './EmptyCourseList.module.css';
 
-import Button from 'src/common/Button/Button';
+import { Button } from 'src/common/Button/Button';
 
 import {
 	EMPTY_LIST_TITLE,
