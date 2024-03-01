@@ -26,35 +26,56 @@ export default function Courses(props: types.CoursesProps) {
 
 	useEffect(() => setCourses(coursesList), [showInfo]);
 
-	const components =
-		courses.length !== 0 ? (
-			courses.map((course, id) => {
-				return (
-					<CourseCard
-						course={course}
-						setShowInfo={setShowInfo}
-						setCourseId={setCourseId}
-						key={id}
-					/>
-				);
-			})
-		) : (
-			<></>
-		);
 	const btn = <Button text={ADD_COURSE_BTN} />;
 	const empty = <EmptyCourseList />;
-	const list = <div>{components}</div>;
-	const view = <>{courses.length !== 0 ? list : empty}</>;
-	const component = showInfo ? (
-		<CourseInfo course={getCourseById(courseId)} setShowInfo={setShowInfo} />
-	) : (
-		<div>
-			<div className={styles.topControl}>
-				<SearchBar setCourses={setCourses} />
-				{btn}
-			</div>
-			{view}
+
+	const topBar = (
+		<div className={styles.topControl}>
+			<SearchBar setCourses={setCourses} />
+			{btn}
 		</div>
 	);
-	return <div className={styles.courses}>{component}</div>;
+
+	if (courses.length === 0) {
+		return (
+			<div className={styles.courses}>
+				{topBar}
+				{empty}
+			</div>
+		);
+	}
+
+	const components = courses.map((course, id) => {
+		return (
+			<CourseCard
+				course={course}
+				setShowInfo={setShowInfo}
+				setCourseId={setCourseId}
+				key={id}
+			/>
+		);
+	});
+
+	const list = <div>{components}</div>;
+
+	if (showInfo) {
+		return (
+			<div className={styles.courses}>
+				{topBar}
+				<CourseInfo
+					course={getCourseById(courseId)}
+					setShowInfo={setShowInfo}
+				/>
+			</div>
+		);
+	}
+
+	const view = (
+		<div className={styles.courses}>
+			{topBar}
+			{list}
+		</div>
+	);
+
+	return <>{view}</>;
 }
