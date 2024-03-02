@@ -14,7 +14,9 @@ export interface CoursesProps {
 
 export interface ButtonProps {
 	text: string;
-	onClick?(): void | React.MouseEvent<HTMLButtonElement>;
+	onClick?(
+		data?: string | React.MouseEvent
+	): void | React.MouseEventHandler<HTMLButtonElement>; //MouseEvent<HTMLButtonElement>;
 }
 
 export interface InputProps {
@@ -27,14 +29,14 @@ export interface InputProps {
 
 export interface CourseInfoProps {
 	course: Course;
-	setShowInfo?: (state: boolean) => void;
-	//setCourses?: (courses: Course[]) => void;
+	onBackClick?(): void | React.MouseEventHandler<HTMLButtonElement>; //MouseEvent<HTMLButtonElement>; //(): void | React.MouseEvent<HTMLButtonElement, MouseEvent>;
 }
 
 export interface CourseCardProps {
 	course: Course;
-	setShowInfo?: (state: boolean) => void;
-	setCourseId?: (id: string) => void;
+	onShowCourseClick?(
+		id?: string
+	): void | React.MouseEventHandler<HTMLButtonElement>; //MouseEvent<HTMLButtonElement>;
 }
 
 export interface SearchBarProps {

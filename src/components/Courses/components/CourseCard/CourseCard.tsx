@@ -11,12 +11,8 @@ import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 import { AUTHORS, CREATED, DURATION, SHOW_COURSE } from 'src/constants';
 
 export default function CourseCard(props: types.CourseCardProps) {
-	const { course, setShowInfo, setCourseId } = props;
+	const { course, onShowCourseClick } = props;
 
-	const showInfoAction = () => {
-		setShowInfo(true);
-		setCourseId(course.id);
-	};
 	return (
 		<div className={styles.courseCard}>
 			<h2 className='courseTitle'>{course.title}</h2>
@@ -39,7 +35,10 @@ export default function CourseCard(props: types.CourseCardProps) {
 							{formatCreationDate(course.creationDate)}
 						</li>
 					</ul>
-					<Button text={SHOW_COURSE} onClick={showInfoAction} />
+					<Button
+						text={SHOW_COURSE}
+						onClick={() => onShowCourseClick(course.id)}
+					/>
 				</div>
 			</div>
 		</div>

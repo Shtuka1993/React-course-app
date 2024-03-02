@@ -1,6 +1,6 @@
 import styles from './Courses.module.css';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Button } from 'src/common/Button/Button';
 
@@ -11,20 +11,18 @@ import SearchBar from './components/SearchBar/SearchBar';
 import EmptyCourseList from '../EmptyCourseList/EmptyCourseList';
 import CourseInfo from '../CourseInfo/CourseInfo';
 
-import {
-	ADD_COURSE_BTN,
-	mockedCoursesList as coursesList,
-} from 'src/constants';
+import { ADD_COURSE_BTN } from 'src/constants';
 
 import * as types from 'src/types';
 
 export default function Courses(props: types.CoursesProps) {
 	const { courses, setCourses } = props;
 
-	const [showInfo, setShowInfo] = useState(false);
-	const [courseId, setCourseId] = useState('');
+	const [courseId, setCourseId] = useState<string | undefined>(undefined);
 
-	useEffect(() => setCourses(coursesList), [showInfo]);
+	const onBackClick = (): void => setCourseId(undefined);
+
+	const onShowCourseClick = (id: string) => setCourseId(id);
 
 	const btn = <Button text={ADD_COURSE_BTN} />;
 	const empty = <EmptyCourseList />;
@@ -45,26 +43,28 @@ export default function Courses(props: types.CoursesProps) {
 		);
 	}
 
-	const components = courses.map((course, id) => {
-		return (
-			<CourseCard
-				course={course}
-				setShowInfo={setShowInfo}
-				setCourseId={setCourseId}
-				key={id}
-			/>
-		);
-	});
+	const components = courses
+		.filter((course) => {
+			if (course != undefined) return course;
+		})
+		.map((course, id) => {
+			return (
+				<CourseCard
+					course={course}
+					onShowCourseClick={onShowCourseClick}
+					key={id}
+				/>
+			);
+		});
 
 	const list = <div>{components}</div>;
 
-	if (showInfo) {
+	if (courseId !== undefined) {
 		return (
 			<div className={styles.courses}>
-				{topBar}
 				<CourseInfo
 					course={getCourseById(courseId)}
-					setShowInfo={setShowInfo}
+					onBackClick={onBackClick}
 				/>
 			</div>
 		);

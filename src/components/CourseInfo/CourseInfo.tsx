@@ -9,7 +9,6 @@ import { formatCreationDate } from 'src/helpers/formatCreationDate';
 import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 
 import {
-	//mockedCoursesList as courses,
 	DESCRIPTION,
 	ID,
 	DURATION,
@@ -19,12 +18,8 @@ import {
 } from 'src/constants';
 
 export default function CourseInfo(props: types.CourseInfoProps) {
-	const { course, setShowInfo /*, setCourses */ } = props;
+	const { course, onBackClick } = props;
 
-	const actionBack = () => {
-		setShowInfo(false);
-		//setCourses(courses);
-	};
 	return (
 		<div className={styles.courseInfo}>
 			<h2 className='courseTitle'>{course.title}</h2>
@@ -54,7 +49,7 @@ export default function CourseInfo(props: types.CourseInfoProps) {
 					</ul>
 				</div>
 			</div>
-			<Button text={BACK} onClick={actionBack} />
+			<Button text={BACK} onClick={onBackClick} />
 		</div>
 	);
 }
