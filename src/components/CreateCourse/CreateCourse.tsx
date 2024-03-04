@@ -5,7 +5,7 @@ import Input from 'src/common/Input/Input';
 import * as text from 'src/constants';
 import * as types from 'src/types';
 
-export const CreateCourse = (props) => {
+export const CreateCourse = (props: types.CreateCourseProps) => {
 	const { id } = props;
 
 	const [title, setTitle] = useState('');

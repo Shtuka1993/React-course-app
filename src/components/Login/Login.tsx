@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from 'src/common/Button/Button';
 import Input from 'src/common/Input/Input';
 import * as text from 'src/constants';
-import * as types from 'src/types';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
@@ -60,3 +60,8 @@ class Login extends React.Component {
 }
 
 export default Login;
+
+Login.propTypes = {
+	email: PropTypes.string,
+	password: PropTypes.string,
+};

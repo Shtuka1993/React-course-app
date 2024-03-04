@@ -28,7 +28,7 @@ export interface InputProps {
 }
 
 export interface CourseInfoProps {
-	course: Course;
+	course?: Course;
 	onBackClick?(): void | React.MouseEventHandler<HTMLButtonElement>; //MouseEvent<HTMLButtonElement>; //(): void | React.MouseEvent<HTMLButtonElement, MouseEvent>;
 }
 
@@ -44,3 +44,7 @@ export interface SearchBarProps {
 }
 
 export type Courses = Course[];
+
+export type CreateCourseProps = {
+	id?: string;
+};

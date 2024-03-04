@@ -17,11 +17,13 @@ import {
 	BACK,
 } from 'src/constants';
 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { getCourseById } from 'src/helpers/getCourseById';
 
 export default function CourseInfo(props: types.CourseInfoProps) {
 	const navigate = useNavigate();
 	const params = useParams();
+	const course = getCourseById(params.courseId);
 	const onBackClick = () => {
 		navigate('/');
 	};
