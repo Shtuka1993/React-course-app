@@ -15,16 +15,22 @@ import { ADD_COURSE_BTN } from 'src/constants';
 
 import * as types from 'src/types';
 
+import { useNavigate } from 'react-router-dom';
 export default function Courses(props: types.CoursesProps) {
+	const navigate = useNavigate();
 	const { courses, setCourses } = props;
 
 	const [courseId, setCourseId] = useState<string | undefined>(undefined);
 
 	const onBackClick = (): void => setCourseId(undefined);
+	const onAddClick = () => {
+		navigate('/courses/add');
+	};
+	const onShowCourseClick = (id: string) => {
+		navigate(`/course/${id}`);
+	};
 
-	const onShowCourseClick = (id: string) => setCourseId(id);
-
-	const btn = <Button text={ADD_COURSE_BTN} />;
+	const btn = <Button onClick={onAddClick} text={ADD_COURSE_BTN} />;
 	const empty = <EmptyCourseList />;
 
 	const topBar = (
@@ -51,8 +57,10 @@ export default function Courses(props: types.CoursesProps) {
 			return (
 				<CourseCard
 					course={course}
-					onShowCourseClick={onShowCourseClick}
 					key={id}
+					onShowCourseClick={() => {
+						onShowCourseClick(course.id);
+					}}
 				/>
 			);
 		});
