@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": [
       "ES2021",
       "dom"
     ],
     "baseUrl": ".",
+    "noImplicitAny": true,
   },
   "include":["."],
 }
