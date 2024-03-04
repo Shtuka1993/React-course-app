@@ -24,7 +24,7 @@ export interface InputProps {
 	value: string;
 	name?: string;
 	label?: string;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface CourseInfoProps {
