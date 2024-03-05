@@ -19,14 +19,6 @@ export interface ButtonProps {
 	): void | React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export interface InputProps {
-	placeholder: string;
-	value: string;
-	name?: string;
-	label?: string;
-	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
 export interface CourseInfoProps {
 	course?: Course;
 	onBackClick?(): void | React.MouseEventHandler<HTMLButtonElement>;
