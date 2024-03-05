@@ -12,13 +12,6 @@ export interface CoursesProps {
 	setCourses: (courses: Course[]) => void;
 }
 
-export interface ButtonProps {
-	text: string;
-	onClick?(
-		data?: string | React.MouseEvent
-	): void | React.MouseEventHandler<HTMLButtonElement>;
-}
-
 export interface CourseInfoProps {
 	course?: Course;
 	onBackClick?(): void | React.MouseEventHandler<HTMLButtonElement>;

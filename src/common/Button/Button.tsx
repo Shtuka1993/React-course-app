@@ -1,12 +1,22 @@
-import * as types from 'src/types';
-
 import { FC } from 'react';
 
 import styles from './Button.module.css';
 
-export const Button: FC<types.ButtonProps> = ({ text, onClick }) => {
+interface ButtonProps {
+	text: string;
+	onClick?(
+		data?: string | React.MouseEvent
+	): void | React.MouseEventHandler<HTMLButtonElement> | Promise<void>;
+	type?: 'button' | 'submit' | 'reset';
+}
+
+export const Button: FC<ButtonProps> = ({
+	text,
+	onClick = undefined,
+	type = 'button',
+}) => {
 	return (
-		<button className={styles.button} onClick={onClick}>
+		<button className={styles.button} onClick={onClick} type={type}>
 			{text}
 		</button>
 	);

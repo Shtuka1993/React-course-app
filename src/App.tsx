@@ -22,8 +22,7 @@ export default function App() {
 			<Header />
 			<div className='contentBlock'>
 				<Routes>
-					<Route path='*' element={<Navigate to='/' />} />
-					<Route path='/' element={<Navigate to='/courses' />} />
+					<Route path='*' element={<Navigate to='/login' />} />
 					<Route
 						path='/courses'
 						element={<Courses courses={courses} setCourses={setCourses} />}
