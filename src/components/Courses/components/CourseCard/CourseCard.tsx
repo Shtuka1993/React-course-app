@@ -9,7 +9,6 @@ import { formatCreationDate } from 'src/helpers/formatCreationDate';
 import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 
 import { AUTHORS, CREATED, DURATION, SHOW_COURSE } from 'src/constants';
-import { Link } from 'react-router-dom';
 
 export default function CourseCard(props: types.CourseCardProps) {
 	const { course, onShowCourseClick } = props;

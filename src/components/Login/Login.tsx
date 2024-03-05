@@ -2,13 +2,18 @@ import React from 'react';
 
 import { Button } from 'src/common/Button/Button';
 import Input from 'src/common/Input/Input';
-import * as text from 'src/constants';
-import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
-class Login extends React.Component {
-	constructor(props) {
+import * as text from 'src/constants';
+
+interface LoginState {
+	email: string;
+	password: string;
+}
+
+class Login extends React.Component<object, LoginState> {
+	constructor(props: object) {
 		super(props);
 		this.state = {
 			email: '',
@@ -60,8 +65,3 @@ class Login extends React.Component {
 }
 
 export default Login;
-
-Login.propTypes = {
-	email: PropTypes.string,
-	password: PropTypes.string,
-};

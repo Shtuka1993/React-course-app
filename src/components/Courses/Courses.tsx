@@ -70,10 +70,7 @@ export default function Courses(props: types.CoursesProps) {
 	if (courseId !== undefined) {
 		return (
 			<div className={styles.courses}>
-				<CourseInfo
-					course={getCourseById(courseId)}
-					onBackClick={onBackClick}
-				/>
+				<CourseInfo />
 			</div>
 		);
 	}

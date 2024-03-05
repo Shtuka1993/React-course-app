@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from 'src/common/Button/Button';
 import Input from 'src/common/Input/Input';
-//import { AuthorItem } from './components/AuthorItem/AthorItem';
 import * as text from 'src/constants';
-import * as types from 'src/types';
 
-export const CreateCourse = (props: types.CreateCourseProps) => {
+interface CreateCourseProps {
+	id?: string;
+}
+
+export const CreateCourse = (props: CreateCourseProps) => {
 	const { id } = props;
 
 	const [title, setTitle] = useState('');

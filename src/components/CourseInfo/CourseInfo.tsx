@@ -1,5 +1,3 @@
-import * as types from 'src/types';
-
 import styles from './CourseInfo.module.css';
 
 import { Button } from 'src/common/Button/Button';
@@ -17,10 +15,10 @@ import {
 	BACK,
 } from 'src/constants';
 
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getCourseById } from 'src/helpers/getCourseById';
 
-export default function CourseInfo(props: types.CourseInfoProps) {
+export default function CourseInfo() {
 	const navigate = useNavigate();
 	const params = useParams();
 	const course = getCourseById(params.courseId);

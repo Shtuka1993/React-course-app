@@ -2,10 +2,15 @@ import React from 'react';
 import { Button } from 'src/common/Button/Button';
 import Input from 'src/common/Input/Input';
 import * as text from 'src/constants';
-import * as types from 'src/types';
 import { Link } from 'react-router-dom';
 
-class Registration extends React.Component {
+interface RegistrationState {
+	name: string;
+	email: string;
+	password: string;
+}
+
+class Registration extends React.Component<object, RegistrationState> {
 	constructor(props: object) {
 		super(props);
 		this.state = {
