@@ -15,7 +15,7 @@ import { ADD_COURSE_BTN } from 'src/constants';
 
 import * as types from 'src/types';
 
-export default function Courses(props: types.CoursesProps) {
+export default function Courses(prop) {
 	const { courses, setCourses } = props;
 
 	const [courseId, setCourseId] = useState<string | undefined>(undefined);
