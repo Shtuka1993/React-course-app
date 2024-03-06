@@ -7,14 +7,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import * as text from 'src/constants';
 
-interface LoginState {
-	email: string;
-	password: string;
-	tocken: string;
-}
-
 const Login = () => {
 	const url = 'http://localhost:4000/login';
+
+	const forbiddenSymbols = /[@#$%^&]/;
 
 	const navigate = useNavigate();
 
@@ -41,17 +37,17 @@ const Login = () => {
 	};
 
 	const validateEmail: (value: string) => boolean = (value) => {
-		return true;
+		return !forbiddenSymbols.test(value);
 	};
 
 	const processEmail = (value: string) => {
-		if (validateEmail) {
+		if (validateEmail(value)) {
 			setEmail(value);
 		}
 	};
 
 	const validatePassword: (value: string) => boolean = (value) => {
-		return true;
+		return !forbiddenSymbols.test(value);
 	};
 
 	const processPassword = (value: string) => {

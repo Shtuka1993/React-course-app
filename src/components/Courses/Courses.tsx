@@ -1,13 +1,10 @@
 import styles from './Courses.module.css';
 
-import { useState } from 'react';
-
 import { Button } from 'src/common/Button/Button';
 
 import CourseCard from './components/CourseCard/CourseCard';
 import SearchBar from './components/SearchBar/SearchBar';
 import EmptyCourseList from '../EmptyCourseList/EmptyCourseList';
-import CourseInfo from '../CourseInfo/CourseInfo';
 
 import { ADD_COURSE_BTN } from 'src/constants';
 
@@ -18,9 +15,6 @@ export default function Courses(props: types.CoursesProps) {
 	const navigate = useNavigate();
 	const { courses, setCourses } = props;
 
-	const [courseId, setCourseId] = useState<string | undefined>(undefined);
-
-	const onBackClick = (): void => setCourseId(undefined);
 	const onAddClick = () => {
 		navigate('/courses/add');
 	};
@@ -64,14 +58,6 @@ export default function Courses(props: types.CoursesProps) {
 		});
 
 	const list = <div>{components}</div>;
-
-	if (courseId !== undefined) {
-		return (
-			<div className={styles.courses}>
-				<CourseInfo />
-			</div>
-		);
-	}
 
 	const view = (
 		<div className={styles.courses}>
