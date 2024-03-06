@@ -22,7 +22,7 @@ export default function CourseInfo() {
 	const navigate = useNavigate();
 	const params = useParams();
 	const course = getCourseById(params.courseId);
-	const onBackClick = () => {
+	const onBackClick: () => void = () => {
 		navigate('/');
 	};
 

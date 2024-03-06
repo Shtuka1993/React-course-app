@@ -34,22 +34,35 @@ const Login = () => {
 		};
 		fetch(url, requestOptions)
 			.then((response) => response.json())
-			.then((data) => setTocken(data.result));
+			.then((data) => {
+				setTocken(data.result);
+				localStorage.setItem('name', data.user.name);
+			});
+	};
+
+	const validateEmail: (value: string) => boolean = (value) => {
+		return true;
 	};
 
 	const processEmail = (value: string) => {
-		setEmail(value);
+		if (validateEmail) {
+			setEmail(value);
+		}
+	};
+
+	const validatePassword: (value: string) => boolean = (value) => {
+		return true;
 	};
 
 	const processPassword = (value: string) => {
-		setPassword(value);
+		if (validatePassword(value)) {
+			setPassword(value);
+		}
 	};
 
 	useEffect(() => {
 		const key = 'tocken';
 		const tockenData = localStorage.getItem(key);
-		console.log(tockenData);
-		console.log(localStorage);
 		if (tockenData) {
 			navigate('/courses');
 		} else {

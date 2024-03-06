@@ -4,8 +4,6 @@ import { useState } from 'react';
 
 import { Button } from 'src/common/Button/Button';
 
-import { getCourseById } from 'src/helpers/getCourseById';
-
 import CourseCard from './components/CourseCard/CourseCard';
 import SearchBar from './components/SearchBar/SearchBar';
 import EmptyCourseList from '../EmptyCourseList/EmptyCourseList';
