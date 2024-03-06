@@ -22,6 +22,7 @@ const Login = () => {
 		e.preventDefault();
 		sendRequest();
 	};
+
 	const sendRequest = async () => {
 		const requestOptions = {
 			method: 'POST',
@@ -31,8 +32,10 @@ const Login = () => {
 		fetch(url, requestOptions)
 			.then((response) => response.json())
 			.then((data) => {
-				setTocken(data.result);
-				localStorage.setItem('name', data.user.name);
+				if (data.successful) {
+					setTocken(data.result);
+					localStorage.setItem('name', data.user.name);
+				}
 			});
 	};
 
