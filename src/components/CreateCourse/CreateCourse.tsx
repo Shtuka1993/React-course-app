@@ -31,7 +31,7 @@ export const CreateCourse = (props: CreateCourseProps) => {
 		<div>
 			<div>
 				<h2>{text.CREATE_EDIT_COURSE}</h2>
-				<form>
+				<form onSubmit={submit}>
 					<div>
 						<h3>{text.MAIN}</h3>
 						<Input
@@ -68,7 +68,7 @@ export const CreateCourse = (props: CreateCourseProps) => {
 					</div>
 					<div>
 						<Button text={text.CANCEL} onClick={cancel} />
-						<Button text={text.CREATE} onClick={submit} />
+						<Button text={text.CREATE} type='submit' />
 					</div>
 				</form>
 			</div>

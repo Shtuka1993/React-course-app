@@ -10,8 +10,6 @@ import * as text from 'src/constants';
 const Login = () => {
 	const url = 'http://localhost:4000/login';
 
-	const forbiddenSymbols = /[@#$%^&]/;
-
 	const navigate = useNavigate();
 
 	const [email, setEmail] = useState('');
@@ -40,7 +38,7 @@ const Login = () => {
 	};
 
 	const validateEmail: (value: string) => boolean = (value) => {
-		return !forbiddenSymbols.test(value);
+		return !text.FORBIDDEN_EMAIL_SYMBOLS.test(value);
 	};
 
 	const processEmail = (value: string) => {
@@ -49,14 +47,8 @@ const Login = () => {
 		}
 	};
 
-	const validatePassword: (value: string) => boolean = (value) => {
-		return !forbiddenSymbols.test(value);
-	};
-
 	const processPassword = (value: string) => {
-		if (validatePassword(value)) {
-			setPassword(value);
-		}
+		setPassword(value);
 	};
 
 	useEffect(() => {
@@ -108,3 +100,6 @@ const Login = () => {
 };
 
 export default Login;
+
+//abc@aaa.bb
+//aaa@aaa.aaa

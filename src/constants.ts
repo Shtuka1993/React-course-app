@@ -77,3 +77,7 @@ export const REGISTRATION = 'Registration';
 export const NAME = 'Name';
 export const CANCEL = 'Cancel';
 export const CREATE = 'Create course';
+
+export const PASSWORD_LENGHT = 6;
+export const FORBIDDEN_SYMBOLS = /[@#$%^&]/;
+export const FORBIDDEN_EMAIL_SYMBOLS = /[#$%^&]/;

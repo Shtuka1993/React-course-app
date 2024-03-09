@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { Button } from 'src/common/Button/Button';
 import Input from 'src/common/Input/Input';
 import * as text from 'src/constants';
@@ -8,6 +8,9 @@ interface RegistrationState {
 	name: string;
 	email: string;
 	password: string;
+	hasErrors: boolean;
+	registrationDone: boolean;
+	errors: string;
 }
 
 class Registration extends React.Component<object, RegistrationState> {
@@ -17,42 +20,45 @@ class Registration extends React.Component<object, RegistrationState> {
 			name: '',
 			email: '',
 			password: '',
+			hasErrors: false,
+			errors: '',
+			registrationDone: false,
 		};
 	}
 
 	registrationDone = false;
 
-	forbiddenSymbols = /[@#$%^&]/;
-
 	url = 'http://localhost:4000/register';
 
-	submit = function () {
-		console.log(this.state);
-		alert('Do register stuff!!!...');
+	submit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		this.sendRequest();
 	};
 
-	sendRequest = function () {
-		async () => {
-			const requestOptions = {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					name: `${this.state.name}`,
-					email: `${this.state.email}`,
-					password: `${this.state.password}`,
-				}),
-			};
-			fetch(this.url, requestOptions)
-				.then((response) => response.json())
-				.then(() => {
-					console.log('WAT');
-					this.registrationDone = true;
-				});
+	sendRequest = async () => {
+		const requestOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				name: `${this.state.name}`,
+				email: `${this.state.email}`,
+				password: `${this.state.password}`,
+			}),
 		};
+		fetch(this.url, requestOptions)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				if (data.successful) {
+					this.setState({ registrationDone: true });
+				} else {
+					this.setState({ hasErrors: true, errors: data.errors.join() });
+				}
+			});
 	};
 
 	validateName = function (value: string): boolean {
-		return !this.forbiddenSymbols.test(value);
+		return !text.FORBIDDEN_SYMBOLS.test(value);
 	};
 
 	processName = function (value: string): void {
@@ -62,7 +68,7 @@ class Registration extends React.Component<object, RegistrationState> {
 	};
 
 	validateEmail = function (value: string): boolean {
-		return !this.forbiddenSymbols.test(value);
+		return !text.FORBIDDEN_EMAIL_SYMBOLS.test(value);
 	};
 
 	processEmail = function (value: string): void {
@@ -71,17 +77,15 @@ class Registration extends React.Component<object, RegistrationState> {
 		}
 	};
 
-	validatePassword = function (value: string): boolean {
-		return !this.forbiddenSymbols.test(value);
-	};
-
 	processPassword = function (value: string): void {
-		if (this.validatePassword(value)) {
-			this.setState({ password: value });
-		}
+		this.setState({ password: value });
 	};
 
 	render() {
+		const errorsBlock = this.state.hasErrors ? (
+			<p>{this.state.errors}</p>
+		) : null;
+
 		return !this.registrationDone ? (
 			<div>
 				<div>
@@ -113,7 +117,9 @@ class Registration extends React.Component<object, RegistrationState> {
 							onChange={({ target }) => {
 								this.processPassword(target.value);
 							}}
+							minLength={text.PASSWORD_LENGHT}
 						/>
+						{errorsBlock}
 						<Button text={text.LOGIN} type='submit' />
 						<p>
 							{text.LOGIN_REGISTRATION_HINT}

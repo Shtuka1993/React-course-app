@@ -11,6 +11,7 @@ interface InputProps {
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	type?: string;
 	required?: boolean;
+	minLength?: number;
 }
 
 class Input extends React.Component<InputProps, InputState> {
@@ -27,6 +28,7 @@ class Input extends React.Component<InputProps, InputState> {
 			onChange,
 			type = 'text',
 			required = false,
+			minLength = 0,
 		} = this.props;
 		const element: ReactElement =
 			label !== '' && name !== '' ? (
@@ -44,6 +46,7 @@ class Input extends React.Component<InputProps, InputState> {
 					value={value}
 					onChange={onChange}
 					required={required}
+					minLength={minLength}
 				/>
 			</>
 		);
