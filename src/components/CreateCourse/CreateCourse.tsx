@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { Button } from 'src/common/Button/Button';
-import Input from 'src/common/Input/Input';
 import * as text from 'src/constants';
+import { MainBlock } from './components/MainBlock/MainBlock';
+import { DescriptionBlock } from './components/DescriptionBlock/DescriptionBlock';
+import { DurationBlock } from './components/DurationBlock/DurationBlock';
+import { AuthorsBlock } from './components/AuthorsBlock/AuthorsBlock';
 
 interface CreateCourseProps {
 	id?: string;
@@ -33,39 +36,22 @@ export const CreateCourse = (props: CreateCourseProps) => {
 				<h2>{text.CREATE_EDIT_COURSE}</h2>
 				<form onSubmit={submit}>
 					<div>
-						<h3>{text.MAIN}</h3>
-						<Input
-							placeholder={text.TITLE}
-							name={text.TITLE}
-							onChange={({ target }) => {
-								setTitle(target.value);
-							}}
-							value={title}
-						/>
-						<label htmlFor={text.DESCRIPTION}>{text.DESCRIPTION}</label>
-						<textarea
-							name={text.DESCRIPTION}
-							placeholder={text.DESCRIPTION}
-							onChange={({ target }) => {
-								setDescription(target.value);
-							}}
-							value={description}
+						<MainBlock title={title} setTitle={setTitle} />
+						<DescriptionBlock
+							description={description}
+							setDescription={setDescription}
 						/>
 					</div>
-					<div>
-						<h2>{text.DURATION}</h2>
-						<Input
-							placeholder={text.DURATION}
-							name={text.DURATION}
-							onChange={({ target }) => {
-								setDuration(target.value);
-							}}
-							value={duration}
-						/>
-					</div>
-					<div>
-						<h2>{text.AUTHORS}</h2>
-					</div>
+					<DurationBlock duration={duration} setDuration={setDuration} />
+					<AuthorsBlock
+						availableAuthors={[]}
+						addAuthor={function (id: string): void {
+							throw new Error('Function not implemented.');
+						}}
+						removeAuthor={function (id: string): void {
+							throw new Error('Function not implemented.');
+						}}
+					/>
 					<div>
 						<Button text={text.CANCEL} onClick={cancel} />
 						<Button text={text.CREATE} type='submit' />

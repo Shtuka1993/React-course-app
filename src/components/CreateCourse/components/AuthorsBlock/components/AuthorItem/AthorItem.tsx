@@ -1,10 +1,10 @@
-import React from 'react';
+import { Button } from 'src/common/Button/Button';
 import * as text from 'src/constants';
 
 interface AuthorItemProps {
 	name: string;
-	addAuthor: unknown;
-	removeAuthor: unknown;
+	addAuthor: (id: string) => void;
+	removeAuthor: (id: string) => void;
 }
 
 export const AuthorItem = (props: AuthorItemProps) => {
@@ -13,8 +13,8 @@ export const AuthorItem = (props: AuthorItemProps) => {
 	return (
 		<div>
 			<span>{name}</span>
-			<span className='add'></span>
-			<span className='remove'></span>
+			<Button text={'add'} onClick={addAuthor} />
+			<Button text={'remove'} onClick={removeAuthor} />
 		</div>
 	);
 };
