@@ -1,6 +1,6 @@
 import * as types from 'src/types';
 
-export const mockedCoursesList: types.Courses = [
+/*export const mockedCoursesList: types.Courses = [
 	{
 		id: 'de5aaa59-90f5-4dbc-b8a9-aaf205c551ba',
 		title: 'JavaScript',
@@ -48,7 +48,7 @@ export const mockedAuthorsList = [
 		id: '095a1817-d45b-4ed7-9cf7-b2417bcbf748',
 		name: 'Valentina Larina',
 	},
-];
+];*/
 
 export const EMPTY_LIST_TITLE = 'Your List is Empty';
 export const EMPTY_LIST_DESCRIPTION =
