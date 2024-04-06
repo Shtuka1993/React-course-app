@@ -1,7 +1,9 @@
 import './App.css';
 
-import { useState } from 'react';
-
+//import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { UseDispatch, useSelector } from 'react-redux';
+import { rootReducer } from './store/rootReducer';
 import Header from './components/Header/Header';
 
 import Courses from './components/Courses/Courses';
@@ -16,6 +18,7 @@ import { CreateCourse } from './components/CreateCourse/CreateCourse';
 
 import { configureStore } from '@reduxjs/toolkit';
 import courses from './store';
+//import { useDispatch, useSelector } from 'react-redux';
 
 export const store = configureStore({
 	reducer: {
@@ -24,7 +27,7 @@ export const store = configureStore({
 });
 
 export default function App() {
-	const [courses, setCourses] = useState(mockedCoursesList);
+	//const [courses, setCourses] = useState(mockedCoursesList);
 
 	return (
 		<BrowserRouter>

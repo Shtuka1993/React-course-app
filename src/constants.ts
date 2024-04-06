@@ -1,6 +1,6 @@
 import * as types from 'src/types';
 
-/*export const mockedCoursesList: types.Courses = [
+export const mockedCoursesList: types.Courses = [
 	{
 		id: 'de5aaa59-90f5-4dbc-b8a9-aaf205c551ba',
 		title: 'JavaScript',
@@ -31,7 +31,7 @@ import * as types from 'src/types';
 	},
 ];
 
-export const mockedAuthorsList = [
+/*export const mockedAuthorsList = [
 	{
 		id: '27cc3006-e93a-4748-8ca8-73d06aa93b6d',
 		name: 'Vasiliy Dobkin',

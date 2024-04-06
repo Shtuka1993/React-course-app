@@ -1,6 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Course } from 'src/types';
-import { GetCourses, GetAuthors } from 'src/services';
+//import { GetCourses, GetAuthors } from 'src/services';
+import { configureStore } from '@reduxjs/toolkit';
+
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import rootReducer from './rootReducer';
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+
+export store;
+
 interface UserInterface {
 	isAuth: boolean;
 	name: string;
@@ -8,10 +18,10 @@ interface UserInterface {
 	token: string;
 }
 
-interface StoreInterface {
+export interface StoreInterface {
 	user: UserInterface;
-	courses: Course[];
-	authors: unknown[];
+	courses: Course[] | null;
+	authors: unknown[] | null;
 }
 
 export const initialState: StoreInterface = {
@@ -21,8 +31,8 @@ export const initialState: StoreInterface = {
 		email: '',
 		token: '',
 	},
-	courses: GetCourses(),
-	authors: GetAuthors(),
+	courses: null,
+	authors: null,
 };
 
 const courses = createSlice({
