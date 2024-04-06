@@ -1,77 +1,149 @@
-import { useState } from 'react';
-import { Button } from 'src/common/Button/Button';
-import Input from 'src/common/Input/Input';
-import * as text from 'src/constants';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthorItem } from './components/AuthorItem/AthorItem';
+import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { createCourse } from '../../store/courses/action';
+import { createAuthor } from '../../store/authors/action';
 
-interface CreateCourseProps {
-	id?: string;
-}
-
-export const CreateCourse = (props: CreateCourseProps) => {
-	const { id } = props;
-
+function CreateCourse() {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [duration, setDuration] = useState('');
-	const [authors, setAuthors] = useState([]);
+	const [courseAuthors, setCourseAuthors] = useState([]);
+	const [newAuthorName, setNewAuthorName] = useState('');
+	const [errors, setErrors] = useState({});
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const authors = useSelector((state) => state.authors.authors);
+	const user = useSelector((state) => state.user);
 
-	const submit = () => {
-		console.log(title, description, duration, authors);
-		alert('Do some course stuff!!!...');
+	const handleAddAuthorToCourse = (authorId) => {
+		setCourseAuthors((prevAuthors) => [...prevAuthors, authorId]);
 	};
 
-	const cancel = () => {
-		setTitle('');
-		setDescription('');
-		setDuration('');
-		setAuthors([]);
+	const handleRemoveAuthorFromCourse = (authorId) => {
+		setCourseAuthors((prevAuthors) =>
+			prevAuthors.filter((id) => id !== authorId)
+		);
 	};
 
+	const handleCreateAuthor = () => {
+		if (newAuthorName.length < 2) {
+			setErrors({
+				...errors,
+				newAuthorName: 'Author name should be at least 2 characters',
+			});
+			return;
+		}
+
+		const newAuthor = {
+			id: uuidv4(),
+			name: newAuthorName,
+		};
+		dispatch(createAuthor(newAuthor, user.token));
+		setNewAuthorName('');
+	};
+
+	const handleCreateCourse = () => {
+		const validationErrors = {};
+
+		if (title.length < 2)
+			validationErrors.title = 'Title should be at least 2 characters';
+		if (description.length < 2)
+			validationErrors.description =
+				'Description should be at least 2 characters';
+		if (isNaN(duration) || duration <= 0)
+			validationErrors.duration = 'Duration should be a number greater than 0';
+
+		if (Object.keys(validationErrors).length) {
+			setErrors(validationErrors);
+			return;
+		}
+
+		const newCourse = {
+			id: uuidv4(),
+			title,
+			description,
+			creationDate: new Date().toISOString(),
+			duration: Number(duration),
+			authors: courseAuthors,
+		};
+
+		dispatch(createCourse(newCourse));
+		navigate('/courses');
+	};
 	return (
-		<div>
+		<div className='CreateCourse'>
+			<label>
+				Title:
+				<input value={title} onChange={(e) => setTitle(e.target.value)} />
+				<p className='error-message'>{errors.title || ' '}</p>
+			</label>
+			<label>
+				Description:
+				<textarea
+					value={description}
+					onChange={(e) => setDescription(e.target.value)}
+				/>
+				<p className='error-message'>{errors.description || ' '}</p>
+			</label>
+			<label>
+				Duration:
+				<input
+					value={duration}
+					onChange={(e) => setDuration(e.target.value)}
+					type='number'
+				/>
+				<p className='error-message'>{errors.duration || ' '}</p>
+			</label>
 			<div>
-				<h2>{text.CREATE_EDIT_COURSE}</h2>
-				<form>
-					<div>
-						<h3>{text.MAIN}</h3>
-						<Input
-							placeholder={text.TITLE}
-							name={text.TITLE}
-							onChange={({ target }) => {
-								setTitle(target.value);
-							}}
-							value={title}
+				{authors
+					.filter((author) => !courseAuthors.includes(author.id))
+					.map((author) => (
+						<AuthorItem
+							key={author.id}
+							author={author}
+							onAction={() => handleAddAuthorToCourse(author.id)}
+							action='Add'
 						/>
-						<label htmlFor={text.DESCRIPTION}>{text.DESCRIPTION}</label>
-						<textarea
-							name={text.DESCRIPTION}
-							placeholder={text.DESCRIPTION}
-							onChange={({ target }) => {
-								setDescription(target.value);
-							}}
-							value={description}
-						/>
-					</div>
-					<div>
-						<h2>{text.DURATION}</h2>
-						<Input
-							placeholder={text.DURATION}
-							name={text.DURATION}
-							onChange={({ target }) => {
-								setDuration(target.value);
-							}}
-							value={duration}
-						/>
-					</div>
-					<div>
-						<h2>{text.AUTHORS}</h2>
-					</div>
-					<div>
-						<Button text={text.CANCEL} onClick={cancel} />
-						<Button text={text.CREATE} onClick={submit} />
-					</div>
-				</form>
+					))}
 			</div>
+			<div>
+				{courseAuthors.map((authorId) => {
+					const author = authors.find((a) => a.id === authorId);
+					if (!author) return null;
+					return (
+						<AuthorItem
+							key={authorId}
+							author={author}
+							onAction={() => handleRemoveAuthorFromCourse(authorId)}
+							action='Delete'
+						/>
+					);
+				})}
+			</div>
+			<label>
+				New Author:
+				<input
+					value={newAuthorName}
+					onChange={(e) => setNewAuthorName(e.target.value)}
+				/>
+				<button onClick={handleCreateAuthor}>Create Author</button>
+			</label>
+			<button onClick={handleCreateCourse}>Create Course</button>
 		</div>
 	);
+}
+
+CreateCourse.propTypes = {
+	authors: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			name: PropTypes.string.isRequired,
+		})
+	),
 };
+
+export default CreateCourse;

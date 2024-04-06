@@ -1,7 +1,7 @@
 import React from 'react';
 import * as text from 'src/constants';
 
-class AuthorItem extends React.Component {
+export class AuthorItem extends React.Component {
 	render() {
 		return (
 			<div>
