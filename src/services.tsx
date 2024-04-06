@@ -1,7 +1,7 @@
-import axios from 'axios';
+/*import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addCourse } from './store';
-import { Course } from 'src/types';
+import { Course } from 'src/types';*/
 
 /*export const GetCourses: () => Course[] | [] = () => {
 	const dispatch = useDispatch();

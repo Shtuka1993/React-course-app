@@ -3,7 +3,7 @@ import './App.css';
 //import { useState } from 'react';
 import { useEffect, useState } from 'react';
 import { UseDispatch, useSelector } from 'react-redux';
-import { rootReducer } from './store/rootReducer';
+//import { rootReducer } from './store/rootReducer';
 import Header from './components/Header/Header';
 
 import Courses from './components/Courses/Courses';

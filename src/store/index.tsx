@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+/*import { createSlice } from '@reduxjs/toolkit';
 import { Course } from 'src/types';
 //import { GetCourses, GetAuthors } from 'src/services';
 import { configureStore } from '@reduxjs/toolkit';
@@ -70,4 +70,37 @@ export const { deleteCourse } = courses.actions;
 export const { addAuthor } = courses.actions;
 export const { createAuthor } = courses.actions;
 export const { saveUser } = courses.actions;
-export default courses.reducer;
+export default courses.reducer;*/
+import { composeWithDevTools } from 'redux-devtools-extension'; // import DevTools
+import { createStore } from 'redux';
+import { rootReducer } from './rootReducer';
+//import { coursesInitialState } from './courses/reducer.js';
+import { Course } from 'src/types';
+
+interface UserInterface {
+	isAuth: boolean;
+	name: string;
+	email: string;
+	token: string;
+}
+
+export interface StoreInterface {
+	user: UserInterface;
+	courses: Course[] | null;
+	authors: unknown[] | null;
+}
+
+export const initialState: StoreInterface = {
+	user: {
+		isAuth: false,
+		name: '',
+		email: '',
+		token: '',
+	},
+	courses: null,
+	authors: null,
+};
+
+const store = createStore(rootReducer, initialState, composeWithDevTools());
+
+export default store;

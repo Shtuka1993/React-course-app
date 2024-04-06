@@ -1,12 +1,12 @@
-import { combineReducers } from 'redux';
-import userReducer from './user/reducer';
-import coursesReducer from './courses/reducer';
-import authorsReducer from './authors/reducer';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+//import { userReducer } from './user/reducer';
+import { coursesReducer } from './courses/reducer.js';
+//import { authorsReducer } from './authors/reducer';
 
-const rootReducer = combineReducers({
-	user: userReducer,
+export const rootReducer = combineReducers({
+	//user: userReducer,
 	courses: coursesReducer,
-	authors: authorsReducer,
+	//authors: authorsReducer,
 });
 
-export default rootReducer;
+export const store = configureStore({ reducer: rootReducer });
