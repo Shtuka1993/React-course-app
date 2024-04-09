@@ -9,7 +9,6 @@ export type Course = {
 
 export interface CoursesProps {
 	courses: Course[];
-	setCourses: (courses: Course[]) => void;
 }
 
 export interface CourseInfoProps {

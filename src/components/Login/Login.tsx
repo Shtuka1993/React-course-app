@@ -10,7 +10,7 @@ import * as text from 'src/constants';
 const Login = () => {
 	const url = 'http://localhost:4000/login';
 
-	const forbiddenSymbols = /[@#$%^&]/;
+	const forbiddenSymbols = /[#$%^&]/;
 
 	const navigate = useNavigate();
 
