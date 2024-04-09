@@ -3,7 +3,6 @@ import styles from './Courses.module.css';
 import { Button } from 'src/common/Button/Button';
 
 import CourseCard from './components/CourseCard/CourseCard';
-import SearchBar from './components/SearchBar/SearchBar';
 import EmptyCourseList from '../EmptyCourseList/EmptyCourseList';
 
 import { ADD_COURSE_BTN } from 'src/constants';
@@ -13,7 +12,7 @@ import * as types from 'src/types';
 import { useNavigate } from 'react-router-dom';
 export default function Courses(props: types.CoursesProps) {
 	const navigate = useNavigate();
-	const { courses, setCourses } = props;
+	const { courses } = props;
 
 	const onAddClick = () => {
 		navigate('/courses/add');
@@ -22,23 +21,10 @@ export default function Courses(props: types.CoursesProps) {
 		navigate(`/course/${id}`);
 	};
 
-	const btn = <Button onClick={onAddClick} text={ADD_COURSE_BTN} />;
 	const empty = <EmptyCourseList />;
 
-	const topBar = (
-		<div className={styles.topControl}>
-			<SearchBar setCourses={setCourses} />
-			{btn}
-		</div>
-	);
-
 	if (courses.length === 0) {
-		return (
-			<div className={styles.courses}>
-				{topBar}
-				{empty}
-			</div>
-		);
+		return <div className={styles.courses}>{empty}</div>;
 	}
 
 	const components = courses
@@ -59,12 +45,7 @@ export default function Courses(props: types.CoursesProps) {
 
 	const list = <div>{components}</div>;
 
-	const view = (
-		<div className={styles.courses}>
-			{topBar}
-			{list}
-		</div>
-	);
+	const view = <div className={styles.courses}>{list}</div>;
 
 	return <>{view}</>;
 }

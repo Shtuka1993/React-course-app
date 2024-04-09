@@ -4,7 +4,7 @@ import { Button } from 'src/common/Button/Button';
 
 import { getCourseDuration } from 'src/helpers/getCourseDuration';
 import { formatCreationDate } from 'src/helpers/formatCreationDate';
-import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
+// import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 
 import {
 	DESCRIPTION,
@@ -50,7 +50,7 @@ export default function CourseInfo() {
 						</li>
 						<li>
 							<b className='title'>{AUTHORS}:</b>
-							{formatAuthorsData(course.authors)}
+							{/* {formatAuthorsData(course.authors, authors)} */}
 						</li>
 					</ul>
 				</div>
