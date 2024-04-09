@@ -8,6 +8,7 @@
     ],
     "baseUrl": ".",
     "noImplicitAny": true,
+    "allowJs": true,
   },
   "include":["."],
 }

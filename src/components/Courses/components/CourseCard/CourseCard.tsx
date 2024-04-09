@@ -6,7 +6,7 @@ import { Button } from 'src/common/Button/Button';
 
 import { getCourseDuration } from 'src/helpers/getCourseDuration';
 import { formatCreationDate } from 'src/helpers/formatCreationDate';
-import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
+// import { formatAuthorsData } from 'src/helpers/formatAuthorsData';
 
 import { AUTHORS, CREATED, DURATION, SHOW_COURSE } from 'src/constants';
 
@@ -24,7 +24,7 @@ export default function CourseCard(props: types.CourseCardProps) {
 					<ul>
 						<li>
 							<b className='title'>{AUTHORS}:</b>
-							{formatAuthorsData(course.authors)}
+							{/* {formatAuthorsData(course.authors, authors)} */}
 						</li>
 						<li>
 							<b className='title'>{DURATION}:</b>
